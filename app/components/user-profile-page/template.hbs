@@ -1,0 +1,10 @@
+<nav>
+  <LinkTo @route="index">Back</LinkTo>
+</nav>
+
+<h1>User profile</h1>
+
+<p>Emoji: {{user.emoji}}</p>
+<p>Image: {{user.image}}</p>
+
+<button {{on "click" (fn this.delete user)}}>delete</button>

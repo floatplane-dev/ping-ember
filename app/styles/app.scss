@@ -1,31 +1,31 @@
-$assetsPath: "/assets";
+$assetsPath: '/assets';
 
 // Variables
-@import "variables/colours";
-@import "variables/fonts";
-@import "variables/easings";
+@import 'variables/colours';
+@import 'variables/fonts';
+@import 'variables/easings';
 
 // Mixins
-@import "mixins/responsive";
+@import 'mixins/responsive';
 // @import 'mixins/headings';
 // @import 'mixins/paragraphs';
 
 // Fonts
-@import "fonts/rubik";
+@import 'fonts/rubik';
 
 // Normalise
-@import "normalise/cross-browser";
-@import "normalise/cross-project";
+@import 'normalise/cross-browser';
+@import 'normalise/cross-project';
 
 // App
-@import "app/components/app/style.scss";
+@import 'app/components/app/style.scss';
 
 // UI
-//
-//
+@import 'app/components/load-spinner/style.scss';
 
 // Pages
-@import "app/components/index-page/style.scss";
-@import "app/components/nearby-page/style.scss";
-@import "app/components/heatmap-page/style.scss";
-@import "app/components/user-page/style.scss";
+@import 'app/components/index-page/style.scss';
+@import 'app/components/nearby-page/style.scss';
+@import 'app/components/heatmap-page/style.scss';
+@import 'app/components/user-create-page/style.scss';
+@import 'app/components/user-profile-page/style.scss';

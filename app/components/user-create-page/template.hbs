@@ -1,0 +1,21 @@
+<nav>
+  <LinkTo @route="index">Back</LinkTo>
+</nav>
+
+<h1>Create a profile</h1>
+
+<Input
+  @id="emoji"
+  @value={{user.emoji}}
+/>
+
+<Input
+  @id="image"
+  @value={{user.image}}
+/>
+
+<button {{on "click" (fn this.save user)}}>Done!</button>
+
+{{#if loading}}
+  <LoadSpinner @icon="cup" />
+{{/if}}

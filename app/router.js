@@ -7,7 +7,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
-  this.route('user');
+  this.route('user', function() {
+    this.route('create');
+    this.route('profile');
+  });
   this.route('heatmap');
   this.route('nearby');
 });
