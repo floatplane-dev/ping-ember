@@ -11,11 +11,20 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
+    "build": "./node_modules/ember-cli/bin/ember build --environment production",
+    "build-ios": "IOS_BUILD=true corber build --platform=ios --environment=production",
+    "build-android": "ANDROID_BUILD=true corber build --platform=android --environment=production",
+    "start": "./node_modules/ember-cli/bin/ember serve",
+    "start-ios": "IOS_BUILD=true corber start --platform=ios",
+    "android": "ANDROID_BUILD=true ember s --port=4200 --live-reload-port=0 --output-path=dist-android/",
+    "start-android": "ANDROID_BUILD=true corber start --platform=android",
+    "test": "./node_modules/ember-cli/bin/ember test",
+    "deploy": "git checkout production -f; git pull origin master; git push; ./remote/deploy.sh; git checkout master",
+    "bump-patch": "npm version patch; git push origin --tags; git push",
+    "bump-minor": "npm version minor; git push origin --tags; git push",
+    "bump-major": "npm version major; git push origin --tags; git push",
     "lint:hbs": "ember-template-lint .",
-    "lint:js": "eslint .",
-    "start": "ember serve",
-    "test": "ember test"
+    "lint:js": "eslint ."
   },
   "devDependencies": {
     "@ember/optional-features": "^1.0.0",
@@ -36,6 +45,7 @@
     "ember-data": "~3.14.0",
     "ember-export-application-global": "^2.0.0",
     "ember-fetch": "^6.7.0",
+    "ember-get-config": "^0.2.4",
     "ember-load-initializers": "^2.1.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-qunit": "^4.5.1",
@@ -50,5 +60,8 @@
   },
   "engines": {
     "node": "8.* || >= 10.*"
+  },
+  "dependencies": {
+    "git-rev-sync": "^1.12.0"
   }
 }
