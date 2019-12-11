@@ -6,7 +6,7 @@ export default Route.extend({
     return RSVP.hash({
       user: this.store.createRecord('user', {
         image: `data:image/png;base64,xxx`,
-        emoji: ':fire:'
+        emoji: '♂️☕️🎓'
       })
     });
   }
