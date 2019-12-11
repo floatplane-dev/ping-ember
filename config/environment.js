@@ -20,7 +20,7 @@ const apiHosts = {
 
 // Where this Ember app is located
 const appHosts = {
-  production: 'https://app.ping.floatplane.dev',
+  production: 'https://ping.floatplane.dev',
   development: {
     web: 'http://localhost:4200',
     ios: 'http://localhost:4200',
