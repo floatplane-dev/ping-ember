@@ -14,8 +14,7 @@ export default Component.extend({
     user
       .save()
       .then(response => {
-        console.debug('user created!');
-        const uuid = response.data.id; // TODO
+        const uuid = response.get('id');
         localStorage.setItem('uuid', uuid);
         this.router.transitionTo('user.profile');
       })
