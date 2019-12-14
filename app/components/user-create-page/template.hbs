@@ -9,9 +9,8 @@
   @value={{user.emoji}}
 />
 
-<Input
-  @id="image"
-  @value={{user.image}}
+<InputImage
+  @user={{user}}
 />
 
 <button {{on "click" (fn this.save user)}}>Done!</button>
