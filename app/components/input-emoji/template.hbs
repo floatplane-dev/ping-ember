@@ -1,0 +1,8 @@
+{{#each emoji as |item|}}
+  <li
+    class={{if item.active 'active'}}
+    {{on "click" (fn this.toggleEmoji item.emoji user)}}
+    >
+    {{item.emoji}}
+  </li>
+{{/each}}
