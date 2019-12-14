@@ -30,6 +30,8 @@
     "@ember/optional-features": "^1.0.0",
     "babel-eslint": "^10.0.3",
     "broccoli-asset-rev": "^3.0.0",
+    "corber": "1.4.2",
+    "corber-ember-livereload": "^0.0.2",
     "ember-auto-import": "^1.5.2",
     "ember-cli": "~3.14.0",
     "ember-cli-app-version": "^3.2.0",
