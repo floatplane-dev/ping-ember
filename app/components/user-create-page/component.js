@@ -15,6 +15,7 @@ export default Component.extend({
       .save()
       .then(response => {
         const uuid = response.get('id');
+        this.auth.set('currentUser', user);
         localStorage.setItem('uuid', uuid);
         this.router.transitionTo('user.profile');
       })
