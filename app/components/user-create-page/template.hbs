@@ -4,15 +4,11 @@
 
 <h1>Create a profile</h1>
 
-<InputEmoji
-  @user={{user}}
-/>
+<InputEmoji @user={{user}} />
 
-<InputImage
-  @user={{user}}
-/>
+<InputImage @user={{user}} />
 
-<button {{on "click" (fn this.save user)}}>Done!</button>
+<button {{on "click" (fn this.create user)}}>{{if create.isRunning 'Creating...' 'Create'}}</button>
 
 {{#if loading}}
   <LoadSpinner @icon="cup" />

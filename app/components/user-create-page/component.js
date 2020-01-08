@@ -5,25 +5,22 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
   elementId: 'user-create-page',
 
+  auth: service(),
   router: service(),
 
-  loading: false,
-
-  save: action(function(user) {
-    this.set('loading', true);
+  create: action(function(user) {
+    console.debug('creating user...');
     user
       .save()
       .then(response => {
+        console.debug('user created', { response });
         const uuid = response.get('id');
-        this.auth.set('currentUser', user);
         localStorage.setItem('uuid', uuid);
+        this.auth.set('currentUser', user);
         this.router.transitionTo('user.profile');
       })
       .catch(response => {
-        console.error('failed to create user');
-      })
-      .finally(() => {
-        this.set('loading', false);
+        console.error('failed to create user', { response });
       });
   })
 });
