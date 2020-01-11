@@ -27,6 +27,7 @@ class geoService extends Service {
   stop() {
     console.debug('geo.stop()');
     this.timer.cancelAll();
+    this.setProperties({ latitude: undefined, longitude: undefined });
   }
 
   @task
