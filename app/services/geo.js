@@ -1,74 +1,57 @@
 import Service from '@ember/service';
-import { task, timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+import { task } from 'ember-concurrency-decorators';
+import { timeout } from 'ember-concurrency';
 
-export default Service.extend({
-  isAllowed: false,
-  isEnabled: false,
+class geoService extends Service {
+  @service auth;
 
-  latitude: undefined,
-  longitude: undefined,
+  // The coordinates of the logged in user
+  latitude = undefined;
+  longitude = undefined;
 
-  auth: service(),
+  // Whether the user has given permission to fetch geo coordinates
+  // allowed = false;
 
-  allow() {
-    console.debug('geo.allow()');
+  // Whether to fetch geo coordinates every X or not
+  // enabled = false;
 
-    this.getLatLong.perform();
-
-    // const self = this;
-
-    // const success = result => {
-    //   const { state } = result;
-    //   console.debug({ state, result });
-    //
-    //   if (state === 'granted') {
-    //     self.set('isAllowed', true);
-    //   }
-    //   //   self.set('isAllowed', true);
-    //   // } else if (state === 'denied') {
-    //   //   self.set('isAllowed', false);
-    //   // } else if (state === 'prompt') {
-    //   //   // do nothing
-    //   // } else {
-    //   //   // unknown state
-    //   //   debugger;
-    //   // }
-    // };
-    //
-    // navigator.permissions.query({ name: 'geolocation' }).then(success);
-  },
-
+  @action
   start() {
     console.debug('geo.start()');
     this.timer.perform();
-    // this.set('isEnabled', true);
-  },
+  }
 
+  @action
   stop() {
     console.debug('geo.stop()');
-    this.timer.cancel();
-    // this.set('isEnabled', false);
-  },
+    this.timer.cancelAll();
+    this.setProperties({ latitude: undefined, longitude: undefined });
+  }
 
-  timer: task(function*() {
+  @task
+  *timer() {
+    console.debug('geo.timer.perform()');
     const fiveSecond = 5 * 1000;
+    let i = 0;
     while (true) {
-      yield this.getLatLong();
-      yield this.saveLatLong();
+      console.debug(i);
+      yield this.getLatLong.perform();
+      // yield this.saveLatLong.perform();
       yield timeout(fiveSecond);
+      i++;
     }
-  }),
+  }
 
-  getLatLong: task(function*() {
+  @task
+  *getLatLong() {
     console.debug('getLatLong');
 
     const success = position => {
-      console.debug('success', { position });
-      this.setProperties({
-        latitude: position.coords.latitude,
-        longitude: position.coords.longitude
-      });
+      const { latitude, longitude } = position.coords;
+      console.debug('success', { latitude, longitude, position });
+      this.setProperties({ latitude, longitude });
     };
 
     const error = err => {
@@ -95,15 +78,18 @@ export default Service.extend({
     console.debug('fetching...');
 
     yield navigator.geolocation.getCurrentPosition(success, error, options);
-  }),
+  }
 
-  saveLatLong: task(function*() {
-    const user = this.auth.currentUser;
-    const { latitude, longitude } = this;
-    user.setProperties({
-      latitude,
-      longitude
-    });
-    yield user.save();
-  })
-});
+  // @task
+  // *saveLatLong() {
+  //   const user = this.auth.currentUser;
+  //   const { latitude, longitude } = this;
+  //   user.setProperties({
+  //     latitude,
+  //     longitude
+  //   });
+  //   yield user.save();
+  // }
+}
+
+export default geoService;

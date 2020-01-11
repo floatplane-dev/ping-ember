@@ -10,18 +10,13 @@
 <h2>{{user.emoji}}</h2>
 
 <p>Your location:</p>
-{{!-- {{#if geoIsAllowed}} --}}
-{{!-- {{#if geo.isAllowed}} --}}
-{{!-- {{#if geoIsEnabled}} --}}
 <p>Latitude: {{geo.latitude}}</p>
 <p>Longitude: {{geo.longitude}}</p>
-<button {{on "click" geo.stop}}>Stop sharing my location</button>
-{{!-- {{else}} --}}
-<button {{on "click" geo.start}}>Start sharing my location</button>
-{{!-- {{/if}} --}}
-{{!-- {{else}} --}}
-<button {{on "click" geo.allow}}>Allow location sharing</button>
-{{!-- {{/if}} --}}
+{{#if geo.timer.isRunning}}
+  <button {{on "click" geo.stop}}>Stop sharing my location</button>
+{{else}}
+  <button {{on "click" geo.start}}>Start sharing my location</button>
+{{/if}}
 
 <p>verify with facebook</p>
 <p>verify with mobile</p>
