@@ -8,6 +8,7 @@ class geoService extends Service {
   @service auth;
 
   // The coordinates of the logged in user
+  // TODO: given they belong to the user, we ought to save them on the model too
   latitude = undefined;
   longitude = undefined;
 

@@ -1,13 +1,14 @@
 import Service from '@ember/service';
-import { task } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
-import { notEmpty } from '@ember/object/computed';
+import { action } from '@ember/object';
+import { task } from 'ember-concurrency-decorators';
 
-export default Service.extend({
-  currentUser: undefined,
+class geoService extends Service {
+  @service store;
 
-  store: service(),
+  currentUser = undefined;
 
+  @action
   reviveUser() {
     const uuid = localStorage.getItem('uuid');
     if (uuid) {
@@ -16,15 +17,20 @@ export default Service.extend({
     } else {
       console.debug('no user in localstorage');
     }
-  },
+  }
 
-  fetchUser: task(function*(uuid) {
+  @task
+  *fetchUser(uuid) {
+    console.debug('fetching user...');
     const user = yield this.store.find('user', uuid);
     if (user) {
+      console.debug('success', { user });
       this.set('currentUser', user);
     } else {
+      console.error('fail');
       this.set('currentUser', undefined);
-      console.error('could not fetch user!');
     }
-  })
-});
+  }
+}
+
+export default geoService;
