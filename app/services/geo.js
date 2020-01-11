@@ -26,7 +26,7 @@ class geoService extends Service {
   @action
   stop() {
     console.debug('geo.stop()');
-    this.timer.cancel();
+    this.timer.cancelAll();
   }
 
   @task
