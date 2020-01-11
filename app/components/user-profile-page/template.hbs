@@ -2,16 +2,29 @@
   <LinkTo @route="index">Back</LinkTo>
 </nav>
 
-<h1>User profile</h1>
-<p>your id: {{user.id}}</p>
-<p>Emoji: {{user.emoji}}</p>
-<img src={{user.image}} alt="">
+<h1>This is you</h1>
+<img
+  src={{user.image}}
+  alt=""
+>
+<h2>{{user.emoji}}</h2>
 
-{{!-- in the short term we only share when you're at the first location --}}
-<p>location sharing settings</p>
+<p>Your location:</p>
+{{!-- {{#if geoIsAllowed}} --}}
+{{!-- {{#if geo.isAllowed}} --}}
+{{!-- {{#if geoIsEnabled}} --}}
+<p>Latitude: {{geo.latitude}}</p>
+<p>Longitude: {{geo.longitude}}</p>
+<button {{on "click" geo.stop}}>Stop sharing my location</button>
+{{!-- {{else}} --}}
+<button {{on "click" geo.start}}>Start sharing my location</button>
+{{!-- {{/if}} --}}
+{{!-- {{else}} --}}
+<button {{on "click" geo.allow}}>Allow location sharing</button>
+{{!-- {{/if}} --}}
 
 <p>verify with facebook</p>
 <p>verify with mobile</p>
 <p>leave feedback</p>
 
-<button {{on "click" (fn this.delete user)}}>delete</button>
+<button {{on "click" (fn this.deleteUser user)}}>Delete my account</button>

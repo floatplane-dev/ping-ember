@@ -1,28 +1,54 @@
 import Service from '@ember/service';
-import { set } from '@ember/object';
 import { task, timeout } from 'ember-concurrency';
 import { inject as service } from '@ember/service';
 
 export default Service.extend({
+  isAllowed: false,
+  isEnabled: false,
+
   latitude: undefined,
   longitude: undefined,
-  permission: undefined, // granted || denied || prompt (default)
 
   auth: service(),
 
-  updateGeolocationPermission() {
-    navigator.permissions.query({ name: 'geolocation' }).then(result => {
-      // result.state == 'granted'/'denied'/'prompt'(default)
-      set(this, 'permission', result.state);
-    });
+  allow() {
+    console.debug('geo.allow()');
+
+    this.getLatLong.perform();
+
+    // const self = this;
+
+    // const success = result => {
+    //   const { state } = result;
+    //   console.debug({ state, result });
+    //
+    //   if (state === 'granted') {
+    //     self.set('isAllowed', true);
+    //   }
+    //   //   self.set('isAllowed', true);
+    //   // } else if (state === 'denied') {
+    //   //   self.set('isAllowed', false);
+    //   // } else if (state === 'prompt') {
+    //   //   // do nothing
+    //   // } else {
+    //   //   // unknown state
+    //   //   debugger;
+    //   // }
+    // };
+    //
+    // navigator.permissions.query({ name: 'geolocation' }).then(success);
   },
 
-  startTimer() {
+  start() {
+    console.debug('geo.start()');
     this.timer.perform();
+    // this.set('isEnabled', true);
   },
 
-  stopTimer() {
+  stop() {
+    console.debug('geo.stop()');
     this.timer.cancel();
+    // this.set('isEnabled', false);
   },
 
   timer: task(function*() {
@@ -38,7 +64,7 @@ export default Service.extend({
     console.debug('getLatLong');
 
     const success = position => {
-      console.warn('success', { position });
+      console.debug('success', { position });
       this.setProperties({
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
@@ -46,7 +72,8 @@ export default Service.extend({
     };
 
     const error = err => {
-      console.error('could not get lat long', { err });
+      console.error('fail', { err });
+
       this.setProperties({
         latitude: undefined,
         longitude: undefined
@@ -60,6 +87,12 @@ export default Service.extend({
       timeout: 5000,
       maximumAge: 0
     };
+
+    if (!navigator.geolocation) {
+      return console.warn('geolocation is not supported by browser');
+    }
+
+    console.debug('fetching...');
 
     yield navigator.geolocation.getCurrentPosition(success, error, options);
   }),
