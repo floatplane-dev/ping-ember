@@ -1,22 +1,10 @@
-import Component from "@ember/component";
-import { set } from "@ember/object";
+import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
+class NearbyPage extends Component {
+  elementId = 'nearby-page';
 
-export default Component.extend({
-  elementId: "nearby-page",
+  @service geo;
+}
 
-  geo: service(),
-
-  init() {
-    this._super(...arguments);
-    this.geo.updateGeolocationPermission();
-  },
-
-  actions: {
-    alertGeolocation() {
-      this.geo.displayGeolocation();
-    }
-  }
-
-});
+export default NearbyPage;

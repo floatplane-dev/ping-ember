@@ -2,7 +2,6 @@
   <LinkTo @route="index">Back</LinkTo>
 </nav>
 
-<p>state: {{geo.permission}}</p>
 <p>latitude: {{geo.latitude}}</p>
 <p>longitude: {{geo.longitude}}</p>
 
@@ -11,19 +10,11 @@
 {{!-- write a service to handle this state --}}
 {{!-- fake it initially --}}
 
-<button
-  type="button"
-  {{action "alertGeolocation"}}>
-
-  {{#if (eq geo.permission "granted")}}
-    Post Geolocation
-  {{else if (eq geo.permission "denied")}}
-    You have denied Location Services :(
-  {{else}}
-    Allow Location Services
-  {{/if}}
-
-</button>
+{{#if geo.timer.isRunning}}
+  <button {{on "click" geo.stop}}>Hide my location</button>
+{{else}}
+  <button {{on "click" geo.start}}>Share my location</button>
+{{/if}}
 
 <div class="map">
   <p>map</p>
