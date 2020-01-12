@@ -2,23 +2,13 @@
   <LinkTo @route="index">Back</LinkTo>
 </nav>
 
-<p>latitude: {{geo.latitude}}</p>
-<p>longitude: {{geo.longitude}}</p>
-
-{{!-- post your location every 30 seconds --}}
-{{!-- show a countdown bar to visually represent how long until the next one --}}
-{{!-- write a service to handle this state --}}
-{{!-- fake it initially --}}
-
 {{#if geo.timer.isRunning}}
   <button {{on "click" geo.stop}}>Hide my location</button>
 {{else}}
   <button {{on "click" geo.start}}>Share my location</button>
 {{/if}}
 
-<div class="map">
-  <p>map</p>
-</div>
+<div id="nearby-map" />
 
 <h1>People near you</h1>
 

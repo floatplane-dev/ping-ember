@@ -6,13 +6,9 @@
   .buttons {
     margin: 20px 0;
   }
-  .map {
-    background: #eee;
+  #nearby-map {
     width: 400px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 400px;
   }
   ul.people {
     margin-top: 20px;
