@@ -3,20 +3,14 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency-decorators';
 import { timeout } from 'ember-concurrency';
+import { alias } from '@ember/object/computed';
 
 class geoService extends Service {
   @service auth;
 
-  // The coordinates of the logged in user
-  // TODO: given they belong to the user, we ought to save them on the model too
-  latitude = undefined;
-  longitude = undefined;
-
-  // Whether the user has given permission to fetch geo coordinates
-  // allowed = false;
-
-  // Whether to fetch geo coordinates every X or not
-  // enabled = false;
+  @alias('auth.user') user;
+  @alias('auth.user.latitude') latitude;
+  @alias('auth.user.longitude') longitude;
 
   @action
   start() {
@@ -39,7 +33,14 @@ class geoService extends Service {
     while (true) {
       console.debug(i);
       yield this.getLatLong.perform();
-      // yield this.saveLatLong.perform();
+      yield this.user
+        .save()
+        .then(response => {
+          console.debug('success', { response });
+        })
+        .catch(err => {
+          console.error('fail', { err });
+        });
       yield timeout(fiveSecond);
       i++;
     }
@@ -78,19 +79,16 @@ class geoService extends Service {
 
     console.debug('fetching...');
 
+    // const promise = new Promise((resolve, reject) => {
+    //   navigator.geolocation.getCurrentPosition(resolve, reject, options);
+    // });
+
+    // yield promise;
+
+    // debugger;
+
     yield navigator.geolocation.getCurrentPosition(success, error, options);
   }
-
-  // @task
-  // *saveLatLong() {
-  //   const user = this.auth.currentUser;
-  //   const { latitude, longitude } = this;
-  //   user.setProperties({
-  //     latitude,
-  //     longitude
-  //   });
-  //   yield user.save();
-  // }
 }
 
 export default geoService;

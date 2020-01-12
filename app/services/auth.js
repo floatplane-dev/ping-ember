@@ -3,10 +3,10 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency-decorators';
 
-class geoService extends Service {
+class authService extends Service {
   @service store;
 
-  currentUser = undefined;
+  user = undefined;
 
   @action
   reviveUser() {
@@ -22,15 +22,18 @@ class geoService extends Service {
   @task
   *fetchUser(uuid) {
     console.debug('fetching user...');
-    const user = yield this.store.find('user', uuid);
+    const user = yield this.store.find('user', uuid).catch(err => {
+      console.error({ err });
+    });
+
     if (user) {
-      console.debug('success', { user });
-      this.set('currentUser', user);
+      console.debug('user fetched', { user });
+      this.set('user', user);
     } else {
-      console.error('fail');
-      this.set('currentUser', undefined);
+      console.error('fetch user failed');
+      this.set('user', undefined);
     }
   }
 }
 
-export default geoService;
+export default authService;
