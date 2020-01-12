@@ -12,14 +12,11 @@
 <p>Your location:</p>
 <p>Latitude: {{geo.latitude}}</p>
 <p>Longitude: {{geo.longitude}}</p>
+
 {{#if geo.timer.isRunning}}
   <button {{on "click" geo.stop}}>Stop sharing my location</button>
 {{else}}
   <button {{on "click" geo.start}}>Start sharing my location</button>
 {{/if}}
-
-<p>verify with facebook</p>
-<p>verify with mobile</p>
-<p>leave feedback</p>
 
 <button {{on "click" (fn this.deleteUser user)}}>Delete my account</button>
