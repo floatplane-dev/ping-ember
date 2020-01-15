@@ -1,32 +1,15 @@
+@import 'app/components/nearby-page/map/style.scss';
+@import 'app/components/nearby-page/list/style.scss';
+
 #nearby-page {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  .buttons {
-    margin: 20px 0;
-  }
 
   .map-wrapper {
     width: 400px;
     height: 400px;
-  }
-
-  ul.people {
-    margin-top: 20px;
-    width: 200px;
-    li {
-      background: #eee;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      padding: 4px;
-      & + li {
-        margin-top: 5px;
-      }
-      p {
-        margin: 0;
-      }
-    }
+    background: #eee;
   }
 }

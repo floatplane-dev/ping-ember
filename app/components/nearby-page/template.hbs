@@ -2,33 +2,25 @@
   <LinkTo @route="index">Back</LinkTo>
 </nav>
 
-  {{#if geo.timer.isRunning}}
-    <button {{on "click" geo.stop}}>Hide my location</button>
-  {{else}}
-    <button {{on "click" geo.start}}>Share my location</button>
-  {{/if}}
+{{#if geo.timer.isRunning}}
+  <button {{on "click" geo.stop}}>Hide my location</button>
+{{else}}
+  <button {{on "click" geo.start}}>Share my location</button>
+{{/if}}
 
-  <div class="map-wrapper">
-    {{#if geo.longitude}}
-      <NearbyPage::Map @latitude={{geo.latitude}} @longitude={{geo.longitude}}/>
+<div class="map-wrapper">
+  {{#if geo.timer.isRunning}}
+
+    {{#if auth.user.longitude}}
+      <NearbyPage::Map @latitude={{auth.user.latitude}} @longitude={{auth.user.longitude}}/>
     {{else}}
       <p>loading</p>
     {{/if}}
-  </div>
+
+  {{else}}
+    <p>image</p>
+  {{/if}}
+</div>
 
 <h1>People near you</h1>
-
-<ul class="people">
-  <li>
-    <p>♂️🍿🎓</p>
-    <button>Ping</button>
-  </li>
-  <li>
-    <p>♂️🥗☕️</p>
-    <button>Ping</button>
-  </li>
-  <li>
-    <p>🎱🏳️‍🌈💼</p>
-    <button>Ping</button>
-  </li>
-</ul>
+<NearbyPage::List />

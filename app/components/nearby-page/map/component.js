@@ -1,8 +1,8 @@
 import Component from '@ember/component';
 import mapboxgl from "mapbox-gl";
 
-class NearbyPage extends Component {
-  elementId: "nearby-map",
+class NearbyMap extends Component {
+  elementId = "nearby-map";
 
   didInsertElement() {
     this._super(...arguments);
@@ -22,4 +22,4 @@ class NearbyPage extends Component {
   }
 }
 
-export default NearbyPage;
+export default NearbyMap;
