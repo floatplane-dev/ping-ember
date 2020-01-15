@@ -16,6 +16,7 @@ export default Component.extend({
         console.debug('user created', { response });
         const uuid = response.get('id');
         localStorage.setItem('uuid', uuid);
+        console.debug('user UUID stored in localStorage');
         this.auth.set('user', user);
         this.router.transitionTo('user.profile');
       })

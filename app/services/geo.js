@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency-decorators';
 import { timeout } from 'ember-concurrency';
+import { alias } from '@ember/object/computed';
 
 class geoService extends Service {
   @service auth;
