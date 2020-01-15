@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 class UserProfilePage extends Component {
   elementId = 'user-profile-page';
 
+  @service auth;
   @service geo;
   @service router;
 

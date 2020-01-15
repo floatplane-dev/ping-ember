@@ -10,8 +10,8 @@
 <h2>{{user.emoji}}</h2>
 
 <p>Your location:</p>
-<p>Latitude: {{geo.latitude}}</p>
-<p>Longitude: {{geo.longitude}}</p>
+<p>Latitude: {{auth.user.latitude}}</p>
+<p>Longitude: {{auth.user.longitude}}</p>
 {{#if geo.timer.isRunning}}
   <button {{on "click" geo.stop}}>Stop sharing my location</button>
 {{else}}

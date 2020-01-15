@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 class NearbyPage extends Component {
   elementId = 'nearby-page';
 
+  @service auth;
   @service geo;
 }
 

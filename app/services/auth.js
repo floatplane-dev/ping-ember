@@ -6,7 +6,7 @@ import { task } from 'ember-concurrency-decorators';
 class geoService extends Service {
   @service store;
 
-  currentUser = undefined;
+  user = undefined;
 
   @action
   reviveUser() {
@@ -25,10 +25,10 @@ class geoService extends Service {
     const user = yield this.store.find('user', uuid);
     if (user) {
       console.debug('success', { user });
-      this.set('currentUser', user);
+      this.set('user', user);
     } else {
       console.error('fail');
-      this.set('currentUser', undefined);
+      this.set('user', undefined);
     }
   }
 }
