@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { task } from 'ember-concurrency-decorators';
 import { timeout } from 'ember-concurrency';
-import { alias } from '@ember/object/computed';
 
 class geoService extends Service {
   @service auth;
@@ -18,7 +17,8 @@ class geoService extends Service {
   stop() {
     console.debug('geo.stop()');
     this.timer.cancelAll();
-    this.setProperties({ latitude: undefined, longitude: undefined });
+    this.auth.user.setProperties({ latitude: undefined, longitude: undefined });
+    this.auth.user.save();
   }
 
   @task
