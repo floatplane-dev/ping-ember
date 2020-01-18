@@ -13,6 +13,7 @@ class UserProfilePage extends Component {
   deleteUser(user) {
     user.deleteRecord();
     localStorage.removeItem('uuid');
+    geo.stop();
     this.router.transitionTo('index');
   }
 }

@@ -1,8 +1,7 @@
-<h1>Create a profile</h1>
-
-<InputEmoji @user={{user}} />
 
 <InputImage @user={{user}} />
+
+<InputEmoji @user={{user}} />
 
 <button {{on "click" (fn this.create user)}}>{{if create.isRunning 'Creating...' 'Create'}}</button>
 
