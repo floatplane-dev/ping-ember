@@ -13,7 +13,7 @@ class UserProfilePage extends Component {
   deleteUser(user) {
     user.deleteRecord();
     localStorage.removeItem('uuid');
-    geo.stop();
+    // geo.stop(); // this causes an error, need a combination of promises here to make it stable
     this.router.transitionTo('index');
   }
 }
