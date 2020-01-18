@@ -1,11 +1,7 @@
-<h1>This is you</h1>
-<img
-  src={{user.image}}
-  alt=""
->
-<h2>{{user.emoji}}</h2>
+<UserCard
+  @emoji={{user.emoji}}
+  @image={{user.image}}/>
 
-<p>Your location:</p>
 <p>Latitude: {{auth.user.latitude}}</p>
 <p>Longitude: {{auth.user.longitude}}</p>
 {{#if geo.timer.isRunning}}

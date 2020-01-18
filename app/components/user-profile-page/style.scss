@@ -1,7 +1,11 @@
 #user-profile-page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  flex-grow: 1;
+  width: 100%;
+
   h1 {
     margin-bottom: 30px;
   }
@@ -14,7 +18,7 @@
     width: auto;
     margin: 0 auto;
   }
-  p {
+  > p {
     margin: 10px 0;
   }
   button {
