@@ -1,10 +1,22 @@
-{{#if user.image}}
-  <img src={{user.image}} alt="">
+<div class="outer-limit">
+    {{#if rawImage}}
+      <InputImage::Resizer>
+        <img
+          src={{rawImage}}
+          alt=""
+          >
+      </InputImage::Resizer>
+    {{else}}
+      <Input
+        type="file"
+        accept="image/*"
+        {{on "change" (fn this.uploadImage)}}
+      />
+    {{/if}}
+
+    <div id="cropper" />
+</div>
+
+{{#if rawImage}}
   <button {{on "click" (fn this.clearImage user)}}>Clear image</button>
-{{else}}
-  <Input
-    type="file"
-    accept="image/*"
-    {{on "change" (fn this.uploadImage)}}
-  />
 {{/if}}

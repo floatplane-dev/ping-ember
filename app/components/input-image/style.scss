@@ -1,0 +1,26 @@
+@import './resizer/style.scss';
+
+fieldset#input-image {
+  padding: 0;
+  border: 0;
+  margin: 0;
+
+  .outer-limit {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    background: pink;
+
+    #cropper {
+      position: absolute;
+      left: 60px;
+      top: 60px;
+      width: 200px;
+      height: 200px;
+      background: lightyellow;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.5;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 
 <InputImage @user={{user}} />
 
-<InputEmoji @user={{user}} />
+{{!-- <InputEmoji @user={{user}} /> --}}
 
 <button {{on "click" (fn this.create user)}}>{{if create.isRunning 'Creating...' 'Create'}}</button>
 
