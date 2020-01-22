@@ -1,0 +1,27 @@
+@import 'app/pods/components/nearby-page/map/style.scss';
+
+#nearby-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .map-wrapper {
+    width: 400px;
+    height: 400px;
+    background: #eee;
+  }
+
+  ul.nearby-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    li {
+      box-sizing: border-box;
+      width: 50%;
+      max-width: 344px;
+      padding: 2px;
+    }
+  }
+}
