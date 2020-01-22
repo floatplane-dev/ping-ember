@@ -4,10 +4,15 @@ import { inject as service } from '@ember/service';
 export default class ApplicationRoute extends Route {
   @service auth;
 
-  init() {
-    // super(...arguments);
+  model() {
+    const uuid = localStorage.getItem('uuid');
 
-    // TODO: add loading state
-    this.auth.reviveUser();
+    if (uuid) {
+      console.debug('found user in localstorage, fetching...');
+      return this.auth.fetchUser.perform(uuid);
+    } else {
+      console.debug('no user in localstorage');
+      return;
+    }
   }
 }

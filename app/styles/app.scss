@@ -1,5 +1,3 @@
-$assetsPath: '/assets';
-
 // Variables
 @import 'variables/colours';
 @import 'variables/fonts';
@@ -17,19 +15,19 @@ $assetsPath: '/assets';
 @import 'normalise/cross-browser';
 @import 'normalise/cross-project';
 
-// App
+// Components
 @import 'app/pods/components/app/style.scss';
-
-// UI
 @import 'app/pods/components/bottom-navigation/style.scss';
-@import 'app/pods/components/progress-indicator/style.scss';
-@import 'app/pods/components/load-spinner/style.scss';
 @import 'app/pods/components/input-emoji/style.scss';
+@import 'app/pods/components/load-spinner/style.scss';
+@import 'app/pods/components/page/style.scss';
+@import 'app/pods/components/page/heatmap/map/style.scss';
+@import 'app/pods/components/page/heatmap/style.scss';
+@import 'app/pods/components/page/index/style.scss';
+@import 'app/pods/components/page/loading/style.scss';
+@import 'app/pods/components/page/nearby/map/style.scss';
+@import 'app/pods/components/page/nearby/style.scss';
+@import 'app/pods/components/page/user-create/style.scss';
+@import 'app/pods/components/page/user-profile/style.scss';
+@import 'app/pods/components/progress-indicator/style.scss';
 @import 'app/pods/components/user-card/style.scss';
-
-// Pages
-@import 'app/pods/components/index-page/style.scss';
-@import 'app/pods/components/nearby-page/style.scss';
-@import 'app/pods/components/heatmap-page/style.scss';
-@import 'app/pods/components/user-create-page/style.scss';
-@import 'app/pods/components/user-profile-page/style.scss';

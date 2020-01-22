@@ -13,5 +13,5 @@ Router.map(function() {
   });
   this.route('heatmap');
   this.route('nearby');
-  this.route('loading');
+  this.route('application-loading');
 });

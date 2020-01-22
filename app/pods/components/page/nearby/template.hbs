@@ -1,0 +1,27 @@
+{{#if geo.timer.isRunning}}
+  <button {{on "click" geo.stop}}>Hide my location</button>
+{{else}}
+  <button {{on "click" geo.start}}>Share my location</button>
+{{/if}}
+
+<div class="map-wrapper">
+  {{#if geo.timer.isRunning}}
+
+    {{#if auth.user.longitude}}
+      <Page::Nearby::Map @latitude={{auth.user.latitude}} @longitude={{auth.user.longitude}} />
+    {{else}}
+      <p>loading</p>
+    {{/if}}
+
+  {{else}}
+    <p>image</p>
+  {{/if}}
+</div>
+
+<ul class="nearby-list">
+  {{#each nearbyUsers as |user|}}
+    <li>
+      <UserCard @emoji={{user.emoji}} @image={{user.image}} />
+    </li>
+  {{/each}}
+</ul>
