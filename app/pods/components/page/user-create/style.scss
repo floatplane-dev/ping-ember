@@ -1,0 +1,19 @@
+#user-create.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 100%;
+
+  input {
+    text-align: center;
+    width: 300px;
+    & + input {
+      margin-top: 10px;
+    }
+  }
+  button {
+    margin-top: 10px;
+  }
+}

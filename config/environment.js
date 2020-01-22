@@ -65,8 +65,15 @@ module.exports = function(env) {
   // Change the root url to an empty string if this is a native build because cordova requires it.
   const locationType = isMobileApp && !isTest ? 'hash' : 'history';
   const rootURL = isMobileApp && !isTest ? '' : '/';
-  const buildConfig = {
+
+  const ENV = {
+    appName: PKG.name,
+    modulePrefix: PKG.name,
+    podModulePrefix: `${PKG.name}/pods`,
     environment,
+    rootURL,
+    locationType,
+
     platform,
     isProduction,
     isDevelopment,
@@ -77,19 +84,11 @@ module.exports = function(env) {
     isWebApp,
     apiHost,
     appHost,
-    // cdnHost,
     apiNamespace,
     gitBranch,
     gitRevision,
-    themeColour
-  };
-  let ENV = {
-    appName: PKG.name,
-    modulePrefix: PKG.name,
-    environment,
-    rootURL,
-    locationType,
-    buildConfig,
+    themeColour,
+
     EmberENV: {
       FEATURES: {},
       EXTEND_PROTOTYPES: {
@@ -98,24 +97,14 @@ module.exports = function(env) {
     },
     APP: {}
   };
-  if (isDevelopment) {
-    // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
-    // ENV.APP.LOG_TRANSITIONS = true;
-    // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-  }
+
   if (isTest) {
-    // Testem prefers this...
     ENV.locationType = 'none';
-    // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
   }
-  if (isProduction) {
-    // here you can enable a production-specific feature
-  }
+
   return ENV;
 };

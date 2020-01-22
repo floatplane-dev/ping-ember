@@ -6,6 +6,7 @@ import { timeout } from 'ember-concurrency';
 
 class geoService extends Service {
   @service auth;
+  @service nearby;
 
   @action
   start() {
@@ -30,6 +31,7 @@ class geoService extends Service {
       console.debug(i);
       yield this.getCoordinates.perform();
       yield this.auth.user.save();
+      // yield this.nearby.fetch.perform();
       yield timeout(fiveSecond);
       i++;
     }

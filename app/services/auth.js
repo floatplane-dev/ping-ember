@@ -1,24 +1,13 @@
 import Service from '@ember/service';
 import { inject as service } from '@ember/service';
-import { action } from '@ember/object';
 import { task } from 'ember-concurrency-decorators';
 
 class authService extends Service {
   @service store;
+  @service auth;
   @service geo;
 
   user = undefined;
-
-  @action
-  reviveUser() {
-    const uuid = localStorage.getItem('uuid');
-    if (uuid) {
-      console.debug('found user in localstorage, fetching...');
-      this.fetchUser.perform(uuid);
-    } else {
-      console.debug('no user in localstorage');
-    }
-  }
 
   @task
   *fetchUser(uuid) {
@@ -29,8 +18,7 @@ class authService extends Service {
 
     if (user) {
       console.debug('success', { user });
-      this.set('user', user);
-      this.geo.start();
+      this.auth.set('user', user);
     } else {
       console.error('fail');
       this.set('user', undefined);

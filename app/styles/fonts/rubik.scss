@@ -4,46 +4,46 @@
 // https://caniuse.com/#search=woff2
 
 @font-face {
-  font-family: "Rubik-Light";
-  src: local("Rubik Light"), local("Rubik-Light"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Light.woff2") format("woff2"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Light.woff") format("woff");
+  font-family: 'Rubik-Light';
+  src: local('Rubik Light'), local('Rubik-Light'),
+    url('/assets/fonts/rubik/subset-Rubik-Light.woff2') format('woff2'),
+    url('/assets/fonts/rubik/subset-Rubik-Light.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Rubik-Regular";
-  src: local("Rubik Regular"), local("Rubik-Regular"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Regular.woff2") format("woff2"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Regular.woff") format("woff");
+  font-family: 'Rubik-Regular';
+  src: local('Rubik Regular'), local('Rubik-Regular'),
+    url('/assets/fonts/rubik/subset-Rubik-Regular.woff2') format('woff2'),
+    url('/assets/fonts/rubik/subset-Rubik-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Rubik-Medium";
-  src: local("Rubik Medium"), local("Rubik-Medium"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Medium.woff2") format("woff2"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Medium.woff") format("woff");
+  font-family: 'Rubik-Medium';
+  src: local('Rubik Medium'), local('Rubik-Medium'),
+    url('/assets/fonts/rubik/subset-Rubik-Medium.woff2') format('woff2'),
+    url('/assets/fonts/rubik/subset-Rubik-Medium.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Rubik-Bold";
-  src: local("Rubik Bold"), local("Rubik-Bold"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Bold.woff2") format("woff2"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Bold.woff") format("woff");
+  font-family: 'Rubik-Bold';
+  src: local('Rubik Bold'), local('Rubik-Bold'),
+    url('/assets/fonts/rubik/subset-Rubik-Bold.woff2') format('woff2'),
+    url('/assets/fonts/rubik/subset-Rubik-Bold.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Rubik-Black";
-  src: local("Rubik Black"), local("Rubik-Black"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Black.woff2") format("woff2"),
-    url("#{$assetsPath}/fonts/subset-Rubik-Black.woff") format("woff");
+  font-family: 'Rubik-Black';
+  src: local('Rubik Black'), local('Rubik-Black'),
+    url('/assets/fonts/rubik/subset-Rubik-Black.woff2') format('woff2'),
+    url('/assets/fonts/rubik/subset-Rubik-Black.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
