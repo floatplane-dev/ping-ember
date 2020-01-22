@@ -8,7 +8,7 @@
   {{#if geo.timer.isRunning}}
 
     {{#if auth.user.longitude}}
-      <NearbyPage::Map @latitude={{auth.user.latitude}} @longitude={{auth.user.longitude}}/>
+      <NearbyPage::Map @latitude={{auth.user.latitude}} @longitude={{auth.user.longitude}} />
     {{else}}
       <p>loading</p>
     {{/if}}
@@ -19,7 +19,9 @@
 </div>
 
 <ul class="nearby-list">
-  <li><UserCard @emoji="♂️🍿🎓" @image="/assets/img/landscape-formatted.png"/></li>
-  <li><UserCard @emoji="♂️🍿🎓" @image="/assets/img/landscape-formatted.png"/></li>
-  <li><UserCard @emoji="♂️🍿🎓" @image="/assets/img/landscape-formatted.png"/></li>
+  {{#each nearbyUsers as |user|}}
+    <li>
+      <UserCard @emoji={{user.emoji}} @image={{user.image}} />
+    </li>
+  {{/each}}
 </ul>

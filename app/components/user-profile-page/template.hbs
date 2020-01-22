@@ -1,9 +1,8 @@
-<UserCard
-  @emoji={{user.emoji}}
-  @image={{user.image}}/>
+<UserCard @emoji={{@user.emoji}} @image={{@user.image}} />
 
 <p>Latitude: {{auth.user.latitude}}</p>
 <p>Longitude: {{auth.user.longitude}}</p>
+
 {{#if geo.timer.isRunning}}
   <button {{on "click" geo.stop}}>Stop sharing my location</button>
 {{else}}

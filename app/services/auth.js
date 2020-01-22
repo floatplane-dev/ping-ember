@@ -30,7 +30,7 @@ class authService extends Service {
     if (user) {
       console.debug('success', { user });
       this.set('user', user);
-      this.geo.start();
+      // this.geo.start();
     } else {
       console.error('fail');
       this.set('user', undefined);
