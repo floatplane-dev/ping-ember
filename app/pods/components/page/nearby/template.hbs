@@ -21,7 +21,8 @@
 <ul class="nearby-list">
   {{#each nearbyUsers as |user|}}
     <li>
-      <UserCard @emoji={{user.emoji}} @image={{user.image}} />
+      <p>{{user.emoji}}</p>
+      <!-- <UserCard @emoji={{user.emoji}} @image={{user.image}} /> -->
     </li>
   {{/each}}
 </ul>

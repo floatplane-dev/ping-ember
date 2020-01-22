@@ -4,6 +4,7 @@ import { task } from 'ember-concurrency-decorators';
 
 class authService extends Service {
   @service store;
+  @service auth;
   @service geo;
 
   user = undefined;
@@ -17,8 +18,7 @@ class authService extends Service {
 
     if (user) {
       console.debug('success', { user });
-      this.set('user', user);
-      // this.geo.start();
+      this.auth.set('user', user);
     } else {
       console.error('fail');
       this.set('user', undefined);

@@ -50,7 +50,8 @@ export default class NearbyPage extends Page {
           console.log({ users1: users });
           return users;
         });
-      // this.set('users', users);
+      const nearbyUsers = this.store.peekAll('user');
+      this.set('nearbyUsers', nearbyUsers);
       yield timeout(fiveSecond);
       i++;
     }
